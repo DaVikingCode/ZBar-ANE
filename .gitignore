@@ -1,0 +1,9 @@
+.project
+.settings
+*.ipa
+*.swf
+*.tmp
+bin/tmp
+*.apk
+bin/ZBarANE.app.dSYM/Contents/Info.plist
+bin/ZBar-ANE.app.dSYM/Contents/Info.plist
