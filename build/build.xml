@@ -31,11 +31,16 @@
 				<pathelement location="../android/libs/FlashRuntimeExtensions.jar" />
 			</classpath>
 		</javac>
-
+		
 		<mkdir dir="../temp/android/" />
-		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar">
-			<fileset dir="../android/libs/"  includes="*.so"/>
-		</jar>
+		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar" />
+		<copy todir="../temp/android/libs/">
+			<fileset dir="../android/libs/">
+				<include name="armeabi/*.so"/>
+				<include name="armeabi-v7a/*.so"/>
+				<include name="x86/*.so"/>
+			</fileset>
+		</copy>
 		<delete dir="../android/temp" />
 	</target>
 
@@ -65,7 +70,7 @@
 		<delete dir="../temp/swc/content/" />
 	</target>
 
-	<target name="android-swc" description="Build ios swc library">
+	<target name="android-swc" description="Build android swc library">
 		<mkdir dir="../temp/swc/content/" />
 
 		<fileset dir="../actionscript" casesensitive="yes" id="classfiles.android">
