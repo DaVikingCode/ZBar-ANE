@@ -16,8 +16,6 @@ public class ZBarExtensionContext extends FREContext
 	// ZBar Objects
 	ImageScanner scanner;
 	private boolean launched = false;
-	
-	public static final String FRE_EXTENSION_CONTEXT = "com.davikingcode.nativeExtensions.zbar"; 
 
 	private static final ZBarExtensionContext INSTANCE = new ZBarExtensionContext();
 

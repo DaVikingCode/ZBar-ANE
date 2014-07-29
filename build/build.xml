@@ -33,7 +33,9 @@
 		</javac>
 
 		<mkdir dir="../temp/android/" />
-		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar" />
+		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar">
+			<fileset dir="../android/libs/"  includes="*.so"/>
+		</jar>
 		<delete dir="../android/temp" />
 	</target>
 
