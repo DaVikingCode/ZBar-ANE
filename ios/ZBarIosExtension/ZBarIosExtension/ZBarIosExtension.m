@@ -7,16 +7,39 @@
 //
 
 #import "FlashRuntimeExtensions.h"
-#import "zbar.h"
-#import "ZBarReaderController.h"
+#import "ZBarIosExtension.h"
 
 #define DEFINE_ANE_FUNCTION(fn) FREObject (fn)(FREContext context, void* functionData, uint32_t argc, FREObject argv[])
 #define MAP_FUNCTION(fn, data) { (const uint8_t*)(#fn), (data), &(fn) }
 
+@implementation ZBarIosExtension
+
+static ZBarIosExtension *sharedInstance = nil;
+
++ (ZBarIosExtension *)sharedInstance
+{
+    if (sharedInstance == nil)
+    {
+        sharedInstance = [[super allocWithZone:NULL] init];
+    }
+    
+    return sharedInstance;
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [ZBarIosExtension sharedInstance];
+}
+
+- (id)copy
+{
+    return self;
+}
+
+@end
+
 DEFINE_ANE_FUNCTION(decodeFromBitmapData) {
     
-    ZBarReaderController *reader = nil;
-    FREGetContextNativeData(context, (void*)&reader);
     FREObject retVal = NULL;
     
     FREObject       objectBitmapData = argv[0];
@@ -50,7 +73,7 @@ DEFINE_ANE_FUNCTION(decodeFromBitmapData) {
     CGColorRenderingIntent  renderingIntent     = kCGRenderingIntentDefault;
     CGImageRef              imageRef            = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
     
-    id <NSFastEnumeration> results = [reader scanImage:imageRef];
+    id <NSFastEnumeration> results = [[ZBarIosExtension sharedInstance].reader scanImage:imageRef];
     
     ZBarSymbol *sym = nil;
     
@@ -73,17 +96,14 @@ DEFINE_ANE_FUNCTION(decodeFromBitmapData) {
 }
 
 void ZBarContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
-    
-    ZBarReaderController *reader = [[ZBarReaderController alloc] init];
-    reader.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [reader.scanner setSymbology: 0
+    [ZBarIosExtension sharedInstance].reader = [[ZBarReaderController alloc] init];
+    [ZBarIosExtension sharedInstance].reader.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [[ZBarIosExtension sharedInstance].reader.scanner setSymbology: 0
                           config: ZBAR_CFG_ENABLE
                               to: 0];
-    [reader.scanner setSymbology: ZBAR_QRCODE
+    [[ZBarIosExtension sharedInstance].reader.scanner setSymbology: ZBAR_QRCODE
                           config: ZBAR_CFG_ENABLE
                               to: 1];
-    
-    FRESetContextNativeData(ctx, CFBridgingRetain(reader));
     
     static FRENamedFunction functionMap[] = {
         MAP_FUNCTION(decodeFromBitmapData, NULL )

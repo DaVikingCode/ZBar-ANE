@@ -10,6 +10,7 @@
 		B05736CC19869AE20051729D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05736CB19869AE20051729D /* Foundation.framework */; };
 		B05736D319869AE20051729D /* ZBarIosExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B05736D219869AE20051729D /* ZBarIosExtension.m */; };
 		B057371119869C7A0051729D /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B057370B19869C7A0051729D /* libzbar.a */; };
+		B07A3B00198B95FC0095DA5C /* ZBarIosExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B07A3AFF198B95FC0095DA5C /* ZBarIosExtension.h */; };
 		B07E32981986ACA900204962 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B07E32971986ACA900204962 /* libiconv.dylib */; };
 		B07E329A1986ACCA00204962 /* Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B05736F719869C7A0051729D /* Decoder.h */; };
 		B07E329B1986ACCD00204962 /* Exception.h in Headers */ = {isa = PBXBuildFile; fileRef = B05736F819869C7A0051729D /* Exception.h */; };
@@ -83,6 +84,7 @@
 		B057370E19869C7A0051729D /* zbar-help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "zbar-help.html"; sourceTree = "<group>"; };
 		B057370F19869C7A0051729D /* zbar-helpicons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-helpicons.png"; sourceTree = "<group>"; };
 		B057371019869C7A0051729D /* zbar-samples.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zbar-samples.png"; sourceTree = "<group>"; };
+		B07A3AFF198B95FC0095DA5C /* ZBarIosExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarIosExtension.h; sourceTree = "<group>"; };
 		B07E32971986ACA900204962 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		B0A766EE1986B17300BE54C5 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B0A766F01986B17800BE54C5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				B05736F219869B500051729D /* FlashRuntimeExtensions.h */,
+				B07A3AFF198B95FC0095DA5C /* ZBarIosExtension.h */,
 				B05736D219869AE20051729D /* ZBarIosExtension.m */,
 				B05736F319869C7A0051729D /* ZBarSDK */,
 				B05736CE19869AE20051729D /* Supporting Files */,
@@ -253,6 +256,7 @@
 				B07E329E1986ACD400204962 /* Processor.h in Headers */,
 				B07E329B1986ACCD00204962 /* Exception.h in Headers */,
 				B07E329C1986ACCE00204962 /* Image.h in Headers */,
+				B07A3B00198B95FC0095DA5C /* ZBarIosExtension.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

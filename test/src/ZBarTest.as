@@ -21,7 +21,7 @@
 			zbar.addEventListener(ZBarEvent.SCAN, _zbarEvt);
 			
 			zbar.decodeFromBitmapData(new qrCodeBitmap().bitmapData);
-			//zbar.decodeFromBitmapData(new logoBitmap().bitmapData);
+			zbar.decodeFromBitmapData(new logoBitmap().bitmapData);
 		}
 
 		private function _zbarEvt(zbEvt:ZBarEvent):void {
